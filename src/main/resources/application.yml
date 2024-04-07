@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: library
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_example
+    username: springuser
+    password: strongPassword
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  main:
+    web-application-type: servlet
+
+server:
+  port: 3000
