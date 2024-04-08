@@ -5,8 +5,8 @@ services:
     image: mysql
     ports:
       - "3307:3306"
-    command: --default-authentication-plugin=mysql_native_password
+    command: --default-authentication-plugin=caching_sha2_password
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: db_example
+      MYSQL_ROOT_PASSWORD: strongPassword
+      MYSQL_DATABASE: library_system

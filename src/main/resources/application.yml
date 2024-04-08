@@ -7,8 +7,8 @@ spring:
     open-in-view: true
     show-sql: true
   datasource:
-    url: jdbc:mysql://localhost:3306/db_example
-    username: springuser
+    url: jdbc:mysql://localhost:3307/library_system
+    username: root
     password: strongPassword
     driver-class-name: com.mysql.cj.jdbc.Driver
   main:
