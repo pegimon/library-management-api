@@ -55,7 +55,7 @@ public class TestingUtils {
         return PatronEntity.builder()
                 .id(1L)
                 .name("Name")
-                .email("Email")
+                .email("Email@email.com")
                 .phoneNumber("Phone Number")
                 .build();
     }
@@ -64,7 +64,7 @@ public class TestingUtils {
         return PatronEntity.builder()
                 .id(2L)
                 .name("Name")
-                .email("Email")
+                .email("Email@email.com")
                 .phoneNumber("Phone Number")
                 .build();
     }
@@ -73,7 +73,7 @@ public class TestingUtils {
         return PatronEntity.builder()
                 .id(3L)
                 .name("Name")
-                .email("Email")
+                .email("Email@email.com")
                 .phoneNumber("Phone Number")
                 .build();
     }
@@ -82,7 +82,7 @@ public class TestingUtils {
         return PatronDto.builder()
                 .id(1L)
                 .name("Name")
-                .email("Email")
+                .email("Email@email.com")
                 .phoneNumber("Phone Number")
                 .build();
     }
