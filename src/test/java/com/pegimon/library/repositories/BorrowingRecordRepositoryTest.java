@@ -1,9 +1,7 @@
 package com.pegimon.library.repositories;
 
 import com.pegimon.library.TestingUtils;
-import com.pegimon.library.models.Entities.BookEntity;
 import com.pegimon.library.models.Entities.BorrowingRecordEntity;
-import com.pegimon.library.models.Entities.PatronEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
