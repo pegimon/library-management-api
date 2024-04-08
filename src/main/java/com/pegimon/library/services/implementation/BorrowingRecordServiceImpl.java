@@ -7,6 +7,7 @@ import com.pegimon.library.repositories.BookRepository;
 import com.pegimon.library.repositories.BorrowingRecordRepository;
 import com.pegimon.library.repositories.PatronRepository;
 import com.pegimon.library.services.BorrowingRecordService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class BorrowingRecordServiceImpl implements BorrowingRecordService {
         this.patronRepository = patronRepository;
     }
 
+    @Transactional
     @Override
     public BorrowingRecordEntity borrowBookBorrowingRecord(Long BookId, Long PatronId, String dateBorrowed) {
         BookEntity book = bookRepository.findById(BookId).orElseThrow(() -> new RuntimeException("Book not found"));
@@ -32,6 +34,7 @@ public class BorrowingRecordServiceImpl implements BorrowingRecordService {
         return borrowingRecordRepository.save(borrowingRecord);
     }
 
+    @Transactional
     @Override
     public BorrowingRecordEntity returnBookBorrowingRecord(Long BookId, Long PatronId, String dateReturned) {
         BookEntity book = bookRepository.findById(BookId).orElseThrow(() -> new RuntimeException("Book not found"));

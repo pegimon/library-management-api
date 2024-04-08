@@ -3,6 +3,7 @@ package com.pegimon.library.services.implementation;
 import com.pegimon.library.models.Entities.PatronEntity;
 import com.pegimon.library.repositories.PatronRepository;
 import com.pegimon.library.services.PatronService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class PatronServiceImpl implements PatronService {
     public PatronServiceImpl(PatronRepository patronRepository) {
         this.patronRepository = patronRepository;
     }
+    @Transactional
     @Override
     public PatronEntity updatePatron(Long id, PatronEntity patron) {
         return patronRepository.findById(id).map(desiredPatron -> {
@@ -25,6 +27,7 @@ public class PatronServiceImpl implements PatronService {
         }).orElseThrow(() -> new RuntimeException("Patron not found"));
     }
 
+    @Transactional
     @Override
     public PatronEntity addPatron(PatronEntity patron) {
         return patronRepository.save(patron);

@@ -4,6 +4,7 @@ import com.pegimon.library.models.Entities.BookEntity;
 import com.pegimon.library.models.dto.BookDto;
 import com.pegimon.library.models.mappers.Mapper;
 import com.pegimon.library.services.BookService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class BookController {
         this.bookMapper = bookMapper;
     }
     @PostMapping
-    public ResponseEntity<BookDto> addBook(@RequestBody BookDto bookDto) {
+    public ResponseEntity<BookDto> addBook(@Valid @RequestBody BookDto bookDto) {
         BookEntity bookEntity = bookMapper.reverse(bookDto);
         BookEntity savedBook = bookService.addBook(bookEntity);
         return new ResponseEntity<>(bookMapper.map(savedBook), HttpStatus.CREATED);

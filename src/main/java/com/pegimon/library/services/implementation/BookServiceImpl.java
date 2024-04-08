@@ -3,6 +3,7 @@ package com.pegimon.library.services.implementation;
 import com.pegimon.library.models.Entities.BookEntity;
 import com.pegimon.library.repositories.BookRepository;
 import com.pegimon.library.services.BookService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class BookServiceImpl implements BookService {
         this.bookRepository = bookRepository;
     }
 
+    @Transactional
     @Override
     public BookEntity UpdateBook(Long id, BookEntity book) {
         return bookRepository.findById(id).map(desiredBook -> {
@@ -27,6 +29,7 @@ public class BookServiceImpl implements BookService {
         }).orElseThrow(() -> new RuntimeException("Book not found"));
     }
 
+    @Transactional
     @Override
     public BookEntity addBook(BookEntity book) {
         return bookRepository.save(book);
