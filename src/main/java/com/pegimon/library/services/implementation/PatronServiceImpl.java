@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 public class PatronServiceImpl implements PatronService {
-    private PatronRepository patronRepository;
+    private final PatronRepository patronRepository;
 
     public PatronServiceImpl(PatronRepository patronRepository) {
         this.patronRepository = patronRepository;

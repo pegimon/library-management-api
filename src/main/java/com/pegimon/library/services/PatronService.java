@@ -1,6 +1,5 @@
 package com.pegimon.library.services;
 
-import com.pegimon.library.models.Entities.BookEntity;
 import com.pegimon.library.models.Entities.PatronEntity;
 
 import java.util.List;
