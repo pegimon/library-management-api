@@ -31,9 +31,8 @@ public class PatronController {
     @PutMapping("/{id}")
     public ResponseEntity<PatronDto> updatePatron(@PathVariable Long id, @RequestBody PatronDto patronDto) {
         PatronEntity patronEntity = patronMapper.reverse(patronDto);
-        return patronService.updatePatron(id, patronEntity)
-                .map(entity -> ResponseEntity.ok(patronMapper.map(entity)))
-                .orElseGet(() -> ResponseEntity.notFound().build());
+        PatronEntity updatedPatron = patronService.updatePatron(id, patronEntity);
+        return ResponseEntity.ok(patronMapper.map(updatedPatron));
     }
 
     @GetMapping

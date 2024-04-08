@@ -16,13 +16,13 @@ public class PatronServiceImpl implements PatronService {
         this.patronRepository = patronRepository;
     }
     @Override
-    public Optional<PatronEntity> updatePatron(Long id, PatronEntity patron) {
-        if (patronRepository.existsById(id)) {
-            patron.setId(id);
-            return Optional.of(patronRepository.save(patron));
-        } else {
-            return Optional.empty();
-        }
+    public PatronEntity updatePatron(Long id, PatronEntity patron) {
+        return patronRepository.findById(id).map(desiredPatron -> {
+            Optional.ofNullable(patron.getName()).ifPresent(desiredPatron::setName);
+            Optional.ofNullable(patron.getPhoneNumber()).ifPresent(desiredPatron::setPhoneNumber);
+            Optional.ofNullable(patron.getEmail()).ifPresent(desiredPatron::setEmail);
+            return patronRepository.save(desiredPatron);
+        }).orElseThrow(() -> new RuntimeException("Patron not found"));
     }
 
     @Override
