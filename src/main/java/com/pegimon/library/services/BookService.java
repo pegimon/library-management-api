@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BookService {
-    Optional<BookEntity> UpdateBook(Long id, BookEntity book);
+    BookEntity UpdateBook(Long id, BookEntity book);
     BookEntity addBook(BookEntity book);
     List<BookEntity> getAllBooks();
     Optional<BookEntity> getBookById(Long id);

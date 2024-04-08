@@ -30,8 +30,8 @@ public class BookController {
     @PutMapping("/{id}")
     public ResponseEntity<BookDto> updateBook(@PathVariable Long id, @RequestBody BookDto bookDto) {
         BookEntity bookEntity = bookMapper.reverse(bookDto);
-        Optional<BookEntity> updatedBook = bookService.UpdateBook(id, bookEntity);
-        return updatedBook.map(entity -> ResponseEntity.ok(bookMapper.map(entity))).orElseGet(() -> ResponseEntity.notFound().build());
+        BookEntity updatedBook = bookService.UpdateBook(id, bookEntity);
+        return ResponseEntity.ok(bookMapper.map(updatedBook));
     }
 
     @GetMapping

@@ -17,13 +17,14 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Optional<BookEntity> UpdateBook(Long id, BookEntity book) {
-        if (bookRepository.existsById(id)) {
-            book.setId(id);
-            return Optional.of(bookRepository.save(book));
-        } else {
-            return Optional.empty();
-        }
+    public BookEntity UpdateBook(Long id, BookEntity book) {
+        return bookRepository.findById(id).map(desiredBook -> {
+            Optional.ofNullable(book.getTitle()).ifPresent(desiredBook::setTitle);
+            Optional.ofNullable(book.getAuthor()).ifPresent(desiredBook::setAuthor);
+            Optional.ofNullable(book.getIsbn()).ifPresent(desiredBook::setIsbn);
+            Optional.ofNullable(book.getPublicationYear()).ifPresent(desiredBook::setPublicationYear);
+            return bookRepository.save(desiredBook);
+        }).orElseThrow(() -> new RuntimeException("Book not found"));
     }
 
     @Override
