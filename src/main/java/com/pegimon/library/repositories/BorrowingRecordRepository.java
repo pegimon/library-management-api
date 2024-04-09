@@ -9,4 +9,6 @@ import java.util.Optional;
 
 public interface BorrowingRecordRepository extends CrudRepository<BorrowingRecordEntity, Long> {
     Optional<BorrowingRecordEntity> findByBookAndPatronAndStatus(BookEntity book, PatronEntity patron, String borrowed);
+
+    Optional<Object> findByBookAndStatus(BookEntity book, String borrowed);
 }

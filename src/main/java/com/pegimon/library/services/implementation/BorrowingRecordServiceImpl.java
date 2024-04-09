@@ -29,6 +29,9 @@ public class BorrowingRecordServiceImpl implements BorrowingRecordService {
     @Override
     public BorrowingRecordEntity borrowBookBorrowingRecord(Long BookId, Long PatronId, String dateBorrowed) {
         BookEntity book = bookRepository.findById(BookId).orElseThrow(() -> new RuntimeException("Book not found"));
+        if(borrowingRecordRepository.findByBookAndStatus(book, "Borrowed").isPresent()) {
+            throw new RuntimeException("Book is already borrowed");
+        }
         PatronEntity patron = patronRepository.findById(PatronId).orElseThrow(() -> new RuntimeException("Patron not found"));
         BorrowingRecordEntity borrowingRecord = new BorrowingRecordEntity(null, book, patron, dateBorrowed, null, "Borrowed");
         return borrowingRecordRepository.save(borrowingRecord);
